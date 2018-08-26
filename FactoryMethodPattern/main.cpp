@@ -1,11 +1,9 @@
-https
-    : // design-patterns.readthedocs.io/zh_CN/latest/creational_patterns/factory_method.html
-// https://design-patterns.readthedocs.io/zh_CN/latest/creational_patterns/factory_method.html
+﻿// https://design-patterns.readthedocs.io/zh_CN/latest/creational_patterns/factory_method.html
 
 #include <iostream>
 #include <memory>
 
-      class Log {
+class Log {
 public:
   Log() { std::cout << "Log Construct" << std::endl; }
   virtual ~Log() { std::cout << "~Log" << std::endl; }
