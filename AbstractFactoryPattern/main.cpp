@@ -134,29 +134,24 @@ public:
   HumanFactory() { std::cout << "HumanFactory Construct" << std::endl; }
   virtual ~HumanFactory() { std::cout << "~HumanFactory" << std::endl; }
 
-  /**
-   * @brief createHuman
-   * 根据人种字符串创建相应的人类对象
-   * @param humanType 人种字符串
-   * @return 人类对象
-   */
-  virtual std::shared_ptr<Human> createHuman(const std::string &humanType) = 0;
+  virtual std::shared_ptr<Human> createBlackHuman() = 0;
+  virtual std::shared_ptr<Human> createWhiteHuman() = 0;
+  virtual std::shared_ptr<Human> createYellowHuman() = 0;
 };
 
 class MaleHumanFactory : public HumanFactory {
 public:
   MaleHumanFactory() { std::cout << "MaleHumanFactory Construct" << std::endl; }
   // HumanFactory interface
-  virtual std::shared_ptr<Human>
-  createHuman(const std::string &humanType) override {
-    if (humanType == "Black") {
-      return std::make_shared<MaleBlackHuman>();
-    } else if (humanType == "White") {
-      return std::make_shared<MaleWhiteHuman>();
-    } else if (humanType == "Yellow") {
-      return std::make_shared<MaleYellowHuman>();
-    }
+  virtual std::shared_ptr<Human> createBlackHuman() override {
+    return std::make_shared<MaleBlackHuman>();
+  }
 
+  virtual std::shared_ptr<Human> createWhiteHuman() override {
+    return std::make_shared<MaleWhiteHuman>();
+  }
+
+  virtual std::shared_ptr<Human> createYellowHuman() override {
     return std::make_shared<MaleYellowHuman>();
   }
 };
@@ -167,16 +162,15 @@ public:
     std::cout << "FemaleHumanFactory Construct" << std::endl;
   }
   // HumanFactory interface
-  virtual std::shared_ptr<Human>
-  createHuman(const std::string &humanType) override {
-    if (humanType == "Black") {
-      return std::make_shared<FemaleBlackHuman>();
-    } else if (humanType == "White") {
-      return std::make_shared<FemaleWhiteHuman>();
-    } else if (humanType == "Yellow") {
-      return std::make_shared<FemaleYellowHuman>();
-    }
+  virtual std::shared_ptr<Human> createBlackHuman() override {
+    return std::make_shared<FemaleBlackHuman>();
+  }
 
+  virtual std::shared_ptr<Human> createWhiteHuman() override {
+    return std::make_shared<FemaleWhiteHuman>();
+  }
+
+  virtual std::shared_ptr<Human> createYellowHuman() override {
     return std::make_shared<FemaleYellowHuman>();
   }
 };
@@ -185,33 +179,33 @@ int main() {
   std::cout << "Abstract Factory Pattern" << std::endl;
 
   MaleHumanFactory maleHumanFactory;
-  std::shared_ptr<Human> blackMan = maleHumanFactory.createHuman("Black");
+  std::shared_ptr<Human> blackMan = maleHumanFactory.createBlackHuman();
   std::cout << "black man color : " << blackMan->getColor() << std::endl;
   std::cout << "black man sex: " << blackMan->getSex() << std::endl;
   blackMan->talk();
 
-  std::shared_ptr<Human> whiteMan = maleHumanFactory.createHuman("White");
+  std::shared_ptr<Human> whiteMan = maleHumanFactory.createWhiteHuman();
   std::cout << "white man color : " << whiteMan->getColor() << std::endl;
   std::cout << "white man sex: " << whiteMan->getSex() << std::endl;
   whiteMan->talk();
 
-  std::shared_ptr<Human> yellowMan = maleHumanFactory.createHuman("Yellow");
+  std::shared_ptr<Human> yellowMan = maleHumanFactory.createYellowHuman();
   std::cout << "yellow man color : " << yellowMan->getColor() << std::endl;
   std::cout << "yellow man sex: " << yellowMan->getSex() << std::endl;
   yellowMan->talk();
 
   FemaleHumanFactory femaleHumanFactory;
-  std::shared_ptr<Human> whiteWoman = femaleHumanFactory.createHuman("White");
+  std::shared_ptr<Human> whiteWoman = femaleHumanFactory.createBlackHuman();
   std::cout << "white woman color : " << whiteWoman->getColor() << std::endl;
   std::cout << "white woman sex: " << whiteWoman->getSex() << std::endl;
   whiteWoman->talk();
 
-  std::shared_ptr<Human> blackWoman = femaleHumanFactory.createHuman("Black");
+  std::shared_ptr<Human> blackWoman = femaleHumanFactory.createWhiteHuman();
   std::cout << "black woman color : " << blackWoman->getColor() << std::endl;
   std::cout << "black woman sex: " << blackWoman->getSex() << std::endl;
   blackWoman->talk();
 
-  std::shared_ptr<Human> yellowWoman = femaleHumanFactory.createHuman("Yellow");
+  std::shared_ptr<Human> yellowWoman = femaleHumanFactory.createYellowHuman();
   std::cout << "yellow woman color : " << yellowWoman->getColor() << std::endl;
   std::cout << "yellow woman sex: " << yellowWoman->getSex() << std::endl;
   yellowWoman->talk();
