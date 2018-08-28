@@ -4,9 +4,8 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
     message(FATAL_ERROR "Do not build in-source. Please remove CMakeCache.txt and the CMakeFiles/ directory. Then build out-of-source.")
 endif()
 
-project(LearnDP4Cpp)
+project(SingletonPattern)
 
-add_subdirectory(SimpleFactoryPattern)
-add_subdirectory(FactoryMethodPattern)
-add_subdirectory(AbstractFactoryPattern)
-add_subdirectory(SingletonPattern)
+set(SP_SOURCE_FILES main.cpp)
+
+add_executable(SingletonPattern ${SP_SOURCE_FILES})
