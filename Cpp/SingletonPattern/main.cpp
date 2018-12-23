@@ -7,16 +7,17 @@ public:
     return instance;
   }
 
-  void use() { std::cout << "I am singleton" << std::endl; }
+  void operation() { std::cout << "singleton operation" << std::endl; }
 
 private:
+  // note: 容易忘记
   Singleton() {}
 };
 
 int main() {
   std::cout << "Singleton Pattern" << std::endl;
 
-  Singleton::getInstance().use();
+  Singleton::getInstance().operation();
 
   return 0;
 }
