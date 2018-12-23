@@ -10,3 +10,5 @@ CTestTestfile.cmake
 build/
 CMakeLists.txt.user
 build*
+.ruby-version
+*.lock

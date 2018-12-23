@@ -4,9 +4,9 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_BINARY_DIR)
     message(FATAL_ERROR "Do not build in-source. Please remove CMakeCache.txt and the CMakeFiles/ directory. Then build out-of-source.")
 endif()
 
-project(AbstractFactoryPattern)
+project(FlyweightPattern)
 
-set(AFP_SOURCE_FILES main.cpp)
+set(FWP_SOURCE_FILES main.cpp)
 
-add_executable(AbstractFactoryPattern ${AFP_SOURCE_FILES})
-target_compile_features(AbstractFactoryPattern PUBLIC cxx_std_11)
+add_executable(FlyweightPattern ${FWP_SOURCE_FILES})
+target_compile_features(FlyweightPattern PUBLIC cxx_std_11)
